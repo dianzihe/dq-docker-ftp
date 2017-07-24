@@ -1,0 +1,12 @@
+docker stop ftpd_server
+docker rm ftpd_server
+docker run \
+	-d \
+	--name ftpd_server \
+	-p 21:21 \
+	-p 30000-30209:30000-30209 \
+	-e "PUBLICHOST=localhost" \
+	--privileged=true \
+	-v /root/rpmbuild:/data \
+	ftp:0720
+
